@@ -28,7 +28,7 @@ impl App {
             query: String::new(),
             results: Vec::new(),
             selected: 0,
-            status: "Type to search, Enter to search, 'd' download (aria2c), 's' Spanish, 'q' quit".into()
+            status: "Type to search, Enter to search, 'd' download (aria2c), 's' Spanish, 'q' quit".into(),
             loading: false,
             scroll_offset: 0,
             spanish_filter: false,
@@ -78,7 +78,7 @@ impl App {
         self.results.clear();
         self.selected = 0;
         self.scroll_offset = 0;
-        self.status = format!("Searching for \"{}\"...", query)
+        self.status = format!("Searching for \"{}\"...", query);
 
         let mut all = Vec::new();
 
@@ -100,7 +100,7 @@ impl App {
         self.results = all;
 
         if self.results.is_empty() {
-            self.status = "No results found. Try a different search.".into()
+            self.status = "No results found. Try a different search.".into();
         } else {
             self.status = format!(
                 "Found {} result(s). Use ↑/↓ to navigate, 'd' to download, Enter to search again",
@@ -120,9 +120,9 @@ impl App {
     pub fn toggle_spanish(&mut self) {
         self.spanish_filter = !self.spanish_filter;
         if self.spanish_filter {
-            self.status = "Spanish filter ON — searching Latino/Castellano dubs".into()
+            self.status = "Spanish filter ON — searching Latino/Castellano dubs".into();
         } else {
-            self.status = "Spanish filter OFF".into()
+            self.status = "Spanish filter OFF".into();
         }
     }
 
@@ -131,7 +131,7 @@ impl App {
             Some(m) => m,
             None => {
                 self.status = "No torrent selected".into();
-                return
+                return;
             }
         };
 
@@ -139,10 +139,10 @@ impl App {
 
         match download::start_download(&magnet) {
             Ok(dl) => {
-                self.status = format!("Downloading: {} → {}/", title, dl.path)
+                self.status = format!("Downloading: {} → {}/", title, dl.path);
             }
             Err(e) => {
-                self.status = format!("Download failed: {}", e)
+                self.status = format!("Download failed: {}", e);
             }
         }
     }
