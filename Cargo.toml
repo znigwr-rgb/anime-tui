@@ -1,0 +1,15 @@
+[package]
+name = "anime-tui"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+
+[dependencies]
+ratatui = "0.29"
+crossterm = "0.28"
+tokio = { version = "1", features = ["full"] }
+reqwest = { version = "0.12", features = ["json"] }
+scraper = "0.22"
+serde = { version = "1", features = ["derive"] }
+regex-lite = "0.1"
+serde_json = "1"
